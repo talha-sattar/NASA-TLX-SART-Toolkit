@@ -154,31 +154,30 @@ export default function SartCalculatorPage() {
       ? -1
       : saqWeightedScore / saqPairwises.length;
 
-    setResultDict([
-      ...resultDict,
-      {
-        tid,
-        tname,
-        AD: saqScoreDict["AD"],
-        AS: saqScoreDict["AS"],
-        UN: saqScoreDict["UN"],
-        OCI: saqScoreDict["OCI"],
-        UWO: saqScoreDict["UWO"],
-        FWD: saqScoreDict["FWD"],
-        OA: saqScoreDict["OA"],
-        saqScore,
-        AD_w: saqWeight["AD"],
-        AS_w: saqWeight["AS"],
-        UN_w: saqWeight["UN"],
-        OCI_w: saqWeight["OCI"],
-        UWO_w: saqWeight["UWO"],
-        FWD_w: saqWeight["FWD"],
-        OA_w: saqWeight["OA"],
-        saqWeightedScore,
-      },
-    ]);
+    const nextRecord = {
+      tid,
+      tname,
+      AD: saqScoreDict["AD"],
+      AS: saqScoreDict["AS"],
+      UN: saqScoreDict["UN"],
+      OCI: saqScoreDict["OCI"],
+      UWO: saqScoreDict["UWO"],
+      FWD: saqScoreDict["FWD"],
+      OA: saqScoreDict["OA"],
+      saqScore,
+      AD_w: saqWeight["AD"],
+      AS_w: saqWeight["AS"],
+      UN_w: saqWeight["UN"],
+      OCI_w: saqWeight["OCI"],
+      UWO_w: saqWeight["UWO"],
+      FWD_w: saqWeight["FWD"],
+      OA_w: saqWeight["OA"],
+      saqWeightedScore,
+    };
 
-    setTid(tid + 1);
+    setResultDict((prev) => [...prev, nextRecord]);
+    setTid((prev) => prev + 1);
+    setScoreResetKey((prev) => prev + 1);
     window.scroll({ top: 200, left: 0, behavior: "smooth" });
   }
 

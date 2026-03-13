@@ -55,29 +55,28 @@ export default function Home() {
     wScore = hasInvalidWeight ? -1 : wScore / pairwises.length;
     rScore = rScore / subscales.length;
 
-    setResultDict([
-      ...resultDict,
-      {
-        tid,
-        tname,
-        MD: scoreDict["MD"],
-        PD: scoreDict["PD"],
-        TD: scoreDict["TD"],
-        PF: scoreDict["PF"],
-        EF: scoreDict["EF"],
-        FR: scoreDict["FR"],
-        rScore,
-        MD_w: weight["MD"],
-        PD_w: weight["PD"],
-        TD_w: weight["TD"],
-        PF_w: weight["PF"],
-        EF_w: weight["EF"],
-        FR_w: weight["FR"],
-        wScore,
-      },
-    ]);
+    const nextRecord = {
+      tid,
+      tname,
+      MD: scoreDict["MD"],
+      PD: scoreDict["PD"],
+      TD: scoreDict["TD"],
+      PF: scoreDict["PF"],
+      EF: scoreDict["EF"],
+      FR: scoreDict["FR"],
+      rScore,
+      MD_w: weight["MD"],
+      PD_w: weight["PD"],
+      TD_w: weight["TD"],
+      PF_w: weight["PF"],
+      EF_w: weight["EF"],
+      FR_w: weight["FR"],
+      wScore,
+    };
 
-    setTid(tid + 1);
+    setResultDict((prev) => [...prev, nextRecord]);
+    setTid((prev) => prev + 1);
+    setScoreResetKey((prev) => prev + 1);
     window.scroll({ top: 200, left: 0, behavior: "smooth" });
   }
 
